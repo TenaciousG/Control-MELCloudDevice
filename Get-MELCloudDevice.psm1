@@ -66,17 +66,32 @@ PROCESS {
 
        $Info =  $Devices.Content | ConvertFrom-Json | ConvertTo-Json -Depth 6 | ConvertFrom-Json
         
-       foreach ($Devices in $Devices.Content) { 
+       $FirstDevice = $Info.value[0].Structure.Devices[0]
+       
+       $Properties = @{
 
-      #  $Info.value.Structure.Devices | select DeviceID,BuildingID, DeviceName, MacAddress, SerialNumber
+         DeviceID = $FirstDevice.DeviceID
+         BuildingID = $FirstDevice.BuildingID
+         DeviceName = $FirstDevice.DeviceName
+         MacAddress = $FirstDevice.MacAddress
+         SerialNumber = $FirstDevice.SerialNumber
+         }
+
+     $obj = New-Object -TypeName PSObject -Property $Properties
+     
+    Write-Output $obj
+
+      #  foreach ($Devices in $Devices.Content) { 
+
+      # #  $Info.value.Structure.Devices | select DeviceID,BuildingID, DeviceName, MacAddress, SerialNumber
 
 
        
-      #  $obj = New-Object -TypeName PSObject -Property $Properties
-       Write-Output $Info.value.Structure.Devices
+      # #  $obj = New-Object -TypeName PSObject -Property $Properties
+       
 
 
-       }
+      #  }
     }
 
     catch {
