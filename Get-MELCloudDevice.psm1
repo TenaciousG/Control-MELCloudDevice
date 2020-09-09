@@ -67,8 +67,7 @@ PROCESS {
        $Info =  $Devices.Content | ConvertFrom-Json | ConvertTo-Json -Depth 6 | ConvertFrom-Json
         
        $FirstDevice = $Info.value[0].Structure.Devices[0]
-
-       Write-Host "Devices: $FirstDevice"       
+       
        $Properties = @{
 
          DeviceID = $FirstDevice.DeviceID
@@ -78,8 +77,11 @@ PROCESS {
          SerialNumber = $FirstDevice.SerialNumber
          }
 
+
      $obj = New-Object -TypeName PSObject -Property $Properties
      
+     
+     Write-Host "Devices: $obj"
     Write-Output $obj
 
       #  foreach ($Devices in $Devices.Content) { 
