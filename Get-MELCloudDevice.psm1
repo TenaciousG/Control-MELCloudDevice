@@ -66,18 +66,19 @@ PROCESS {
 
        $Info =  $Devices.Content | ConvertFrom-Json | ConvertTo-Json -Depth 6 | ConvertFrom-Json
         
-        Write-Host "Got info $Info"
+      #   Write-Host "Got info $Info"
         
-       $FirstDevice1 = $Info.Structure.Devices[0]
-       Write-Host "Got firstdevice $FirstDevice1"
+      ## Web PSCore likes this:
+       $FirstDevice = $Info.Structure.Devices[0]
+      #  Write-Host "Got firstdevice $FirstDevice1"
 
-       $InfoValueCount = $Info.value.Count
-       $DevicesCount = $Info.value[0].Structure.Devices.Count
-       Write-Host "LOOK-DeviceCount: $InfoValueCount  and $DevicesCount"
-       Write-Host "LOOK-Info: $Info"
-       $FirstDevice = $Info.value[0].Structure.Devices[0]
+      #  $InfoValueCount = $Info.value.Count
+      #  $DevicesCount = $Info.value[0].Structure.Devices.Count
+      #  Write-Host "LOOK-DeviceCount: $InfoValueCount  and $DevicesCount"
+      #  Write-Host "LOOK-Info: $Info"
+      #  $FirstDevice = $Info.value[0].Structure.Devices[0]
        
-       Write-Host "LOOK-First: $FirstDevice"
+      #  Write-Host "LOOK-First: $FirstDevice"
        $Properties = @{
 
          DeviceID = $FirstDevice.DeviceID
