@@ -68,7 +68,12 @@ PROCESS {
         
        foreach ($Devices in $Devices.Content) { 
 
-       $Info.value.Structure.Devices | select DeviceID,BuildingID, DeviceName, MacAddress, SerialNumber
+      #  $Info.value.Structure.Devices | select DeviceID,BuildingID, DeviceName, MacAddress, SerialNumber
+
+
+       
+      #  $obj = New-Object -TypeName PSObject -Property $Properties
+       Write-Output $Info.value.Structure.Devices
 
 
        }
