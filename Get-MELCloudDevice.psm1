@@ -66,6 +66,7 @@ PROCESS {
 
        $Info =  $Devices.Content | ConvertFrom-Json | ConvertTo-Json -Depth 6 | ConvertFrom-Json
         
+       Write-Host "LOOK-Info: $Info"
        $FirstDevice = $Info.value[0].Structure.Devices[0]
        
        $Properties = @{
@@ -78,11 +79,11 @@ PROCESS {
          }
 
 
-         Write-Host "HERE1: $Properties"
+         Write-Host "LOOK-Props: $Properties"
      $obj = New-Object -TypeName PSObject -Property $Properties
      
      
-     Write-Host "HERE2: $obj"
+     Write-Host "LOOK-Obj: $obj"
     Write-Output $obj
 
       #  foreach ($Devices in $Devices.Content) { 
