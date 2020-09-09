@@ -66,6 +66,9 @@ PROCESS {
 
        $Info =  $Devices.Content | ConvertFrom-Json | ConvertTo-Json -Depth 6 | ConvertFrom-Json
         
+       $InfoValueCount = $Info.value.Count()
+       $DevicesCount = $Info.value[0].Structure.Devices.Count()
+       Write-Host "LOOK-DeviceCount: $InfoValueCount  and $DevicesCount"
        Write-Host "LOOK-Info: $Info"
        $FirstDevice = $Info.value[0].Structure.Devices[0]
        
