@@ -64,12 +64,11 @@ PROCESS {
 
        $Devices = Invoke-WebRequest -Uri $Uri -Headers $Header -Method GET
 
-       Write-Host "Devices: $Devices"
-
        $Info =  $Devices.Content | ConvertFrom-Json | ConvertTo-Json -Depth 6 | ConvertFrom-Json
         
        $FirstDevice = $Info.value[0].Structure.Devices[0]
-       
+
+       Write-Host "Devices: $FirstDevice"       
        $Properties = @{
 
          DeviceID = $FirstDevice.DeviceID
