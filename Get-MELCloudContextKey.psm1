@@ -30,11 +30,17 @@
 param(
   
 
-     [Parameter(Mandatory = $True)]   
-     [ValidateNotNull()]
-     [System.Management.Automation.PSCredential]
-     [System.Management.Automation.Credential()]
-     $Credential = [System.Management.Automation.PSCredential]::Empty
+   [Parameter(Mandatory = $True,
+   ValueFromPipeline = $False,
+   HelpMessage = "Enter your UserName")]
+   [Alias('un')]
+   [string[]]$UserName,
+
+   [Parameter(Mandatory = $True,
+   ValueFromPipeline = $False,
+   HelpMessage = "Enter your Password")]
+   [Alias('pw')]
+   [string[]]$Password
     
         
 )
@@ -46,8 +52,9 @@ BEGIN {}
 PROCESS {
 
 
-        $Username = $Credential.UserName
-        $Password = $Credential.GetNetworkCredential().Password      
+      #   $Username = $Credential.UserName
+      #   $Password = $Credential.Password  
+      #   $Password = $Credential.GetNetworkCredential().Password      
 
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
