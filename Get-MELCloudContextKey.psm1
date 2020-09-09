@@ -95,8 +95,8 @@ PROCESS {
     
         $LoginData = Invoke-WebRequest -Method POST -Uri $Uri -Body $Body -Headers $Header -ContentType $ContentType
         $Logon = $LoginData.Content | ConvertFrom-Json
-
-
+        $LoginData = $Logon.LoginData
+        Write-Host "logondata $LoginData"
         foreach ( $item in $Logon ) {
 
         $Settings = $item | Select-Object -Property *
