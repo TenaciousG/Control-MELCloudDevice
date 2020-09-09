@@ -78,10 +78,11 @@ PROCESS {
          }
 
 
+         Write-Host "HERE1: $Properties"
      $obj = New-Object -TypeName PSObject -Property $Properties
      
      
-     Write-Host "Devices: $obj"
+     Write-Host "HERE2: $obj"
     Write-Output $obj
 
       #  foreach ($Devices in $Devices.Content) { 
