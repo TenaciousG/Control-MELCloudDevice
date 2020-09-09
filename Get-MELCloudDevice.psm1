@@ -69,6 +69,7 @@ PROCESS {
        Write-Host "LOOK-Info: $Info"
        $FirstDevice = $Info.value[0].Structure.Devices[0]
        
+       Write-Host "LOOK-First: $FirstDevice"
        $Properties = @{
 
          DeviceID = $FirstDevice.DeviceID
